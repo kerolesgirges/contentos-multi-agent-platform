@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ContentOS — Workflow control room</title>
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">CO</span><span>ContentOS</span><small>synthetic control room</small></div>
+    <div class="topbar-actions"><span class="live-dot"></span><span>Local demo</span><button class="ghost-button" id="new-workflow">New workflow</button></div>
+  </header>
+  <main class="shell">
+    <aside class="sidebar">
+      <div class="nav-title">Workspace</div>
+      <button class="nav-item active"><span class="nav-icon run"></span> Active run</button>
+      <button class="nav-item"><span class="nav-icon artifact"></span> Artifacts</button>
+      <button class="nav-item"><span class="nav-icon events"></span> Event log</button>
+      <div class="sidebar-rule"></div>
+      <div class="nav-title">System</div>
+      <button class="nav-item"><span class="nav-icon worker"></span> Worker adapters</button>
+      <button class="nav-item"><span class="nav-icon settings"></span> Settings</button>
+      <div class="sidebar-footer"><span class="avatar">AI</span><div><strong>Reviewer mode</strong><small>human oversight enabled</small></div></div>
+    </aside>
+    <section class="content">
+      <div class="page-heading"><div><p class="overline" id="active-workflow">ACTIVE WORKFLOW / WF_7F31A8C2</p><h1 id="page-title">Feedback loops for early-career engineers</h1><p class="lede" id="page-lede">A synthetic content run showing how planning, generation, validation, and review fit together.</p></div><div class="heading-status"><span class="status-badge review" id="page-state">Needs review</span><span class="mono">UPDATED 09:42:18 UTC</span></div></div>
+
+      <section class="trace-panel" aria-label="Workflow execution trace">
+        <div class="panel-head"><div><h2>Execution trace</h2><p>One visible path from brief to approved output.</p></div><span class="trace-count">03 / 06 checkpoints</span></div>
+        <div class="trace">
+          <div class="trace-step complete"><span class="trace-node">✓</span><div><strong>Brief</strong><small>received</small></div></div><span class="trace-line complete"></span>
+          <div class="trace-step complete"><span class="trace-node">✓</span><div><strong>Plan</strong><small>approved</small></div></div><span class="trace-line complete"></span>
+          <div class="trace-step active"><span class="trace-node">!</span><div><strong>Workers</strong><small>2 running</small></div></div><span class="trace-line"></span>
+          <div class="trace-step"><span class="trace-node">4</span><div><strong>Validate</strong><small>queued</small></div></div><span class="trace-line"></span>
+          <div class="trace-step"><span class="trace-node">5</span><div><strong>Review</strong><small>next gate</small></div></div><span class="trace-line"></span>
+          <div class="trace-step"><span class="trace-node">6</span><div><strong>Publish</strong><small>not started</small></div></div>
+        </div>
+      </section>
+
+      <div class="workspace-grid">
+        <section class="panel task-panel"><div class="panel-head"><div><h2>Task queue</h2><p>Every task has an owner, state, and inspectable output.</p></div><div class="filters"><button class="filter active">All <span>05</span></button><button class="filter">Needs review <span>01</span></button></div></div><div class="table-wrap"><table><thead><tr><th>Task</th><th>Owner</th><th>State</th><th>Confidence</th><th>Runtime</th></tr></thead><tbody id="task-rows"></tbody></table></div></section>
+        <aside class="panel detail-panel"><div class="panel-head"><div><p class="overline">SELECTED TASK</p><h2 id="detail-title">Draft slide outline</h2></div><span class="status-badge review" id="detail-state">Needs review</span></div><p class="detail-copy" id="detail-summary">12-slide outline with pacing notes and learning objectives.</p><div class="detail-meta"><div><span>Worker</span><strong id="detail-owner">Slide worker</strong></div><div><span>Artifact</span><strong class="mono" id="detail-artifact">art_8d2c71fe</strong></div><div><span>Confidence</span><strong id="detail-confidence">88%</strong></div></div><div class="review-box" id="review-box"><label for="review-note">Review note</label><textarea id="review-note" placeholder="What should the next worker know?"></textarea><div class="review-actions"><button class="secondary-button" id="revise">Request revision</button><button class="primary-button" id="approve">Approve artifact</button></div></div></aside>
+      </div>
+
+      <section class="panel events-panel"><div class="panel-head"><div><h2>Event log</h2><p>Structured history for debugging and trust.</p></div><button class="text-button">View API response →</button></div><div id="events" class="events"></div></section>
+    </section>
+  </main>
+  <dialog id="workflow-dialog"><form method="dialog" id="workflow-form"><div class="dialog-head"><div><p class="overline">NEW RUN</p><h2>Create a synthetic workflow</h2></div><button class="close-button" value="cancel" aria-label="Close">×</button></div><label>Brief title<input name="title" required minlength="3" value="Explain feedback loops" /></label><label>Audience<input name="audience" required minlength="3" value="Early-career engineers" /></label><label>Deliverables<select name="deliverables"><option value="slides,reading_material,quiz">Slides, reading material, quiz</option><option value="slides">Slides only</option><option value="reading_material">Reading material only</option></select></label><button class="primary-button" value="default">Create workflow</button></form></dialog>
+  <script src="/assets/app.js"></script>
+</body>
+</html>
